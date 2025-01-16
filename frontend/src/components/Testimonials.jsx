@@ -14,44 +14,44 @@ const userTestimonials = [
   {
     avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
     name: "Remy Sharp",
-    occupation: "Senior Engineer",
+    occupation: "Football Fan",
     testimonial:
-      "I absolutely love how versatile this product is! Whether I'm tackling work projects or indulging in my favorite hobbies, it seamlessly adapts to my changing needs. Its intuitive design has truly enhanced my daily routine, making tasks more efficient and enjoyable.",
+      "I absolutely love how easy it is to buy tickets and stream games on this website! The interface is so user-friendly, and I never miss a moment of the action. Highly recommend it to all WC2030 fans!",
   },
   {
     avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />,
     name: "Travis Howard",
-    occupation: "Lead Product Designer",
+    occupation: "Sports Enthusiast",
     testimonial:
-      "One of the standout features of this product is the exceptional customer support. In my experience, the team behind this product has been quick to respond and incredibly helpful. It's reassuring to know that they stand firmly behind their product.",
+      "The customer support team is fantastic! They helped me resolve an issue with my ticket purchase quickly and efficiently. It's great to know they’re there when you need them.",
   },
   {
     avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />,
     name: "Cindy Baker",
-    occupation: "CTO",
+    occupation: "Casual Viewer",
     testimonial:
-      "The level of simplicity and user-friendliness in this product has significantly simplified my life. I appreciate the creators for delivering a solution that not only meets but exceeds user expectations.",
+      "I’m not a hardcore football fan, but this website made it so easy to follow the WC2030 games. The streaming quality is excellent, and the ticket-buying process is straightforward.",
   },
   {
-    avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/4.jpg" />,
+    avatar: <Avatar alt="Julia Stewart" src="/static/images/avatar/4.jpg" />,
     name: "Julia Stewart",
-    occupation: "Senior Engineer",
+    occupation: "Frequent User",
     testimonial:
-      "I appreciate the attention to detail in the design of this product. The small touches make a big difference, and it's evident that the creators focused on delivering a premium experience.",
+      "The attention to detail on this website is impressive. From the seamless navigation to the real-time updates, it’s clear that a lot of thought went into creating a premium experience.",
   },
   {
-    avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/5.jpg" />,
+    avatar: <Avatar alt="John Smith" src="/static/images/avatar/5.jpg" />,
     name: "John Smith",
-    occupation: "Product Designer",
+    occupation: "Tech Savvy",
     testimonial:
-      "I've tried other similar products, but this one stands out for its innovative features. It's clear that the makers put a lot of thought into creating a solution that truly addresses user needs.",
+      "I’ve used other platforms, but this one stands out for its innovative features. The ability to stream games on multiple devices is a game-changer for me.",
   },
   {
-    avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/6.jpg" />,
+    avatar: <Avatar alt="Daniel Wolf" src="/static/images/avatar/6.jpg" />,
     name: "Daniel Wolf",
-    occupation: "CDO",
+    occupation: "Football Analyst",
     testimonial:
-      "The quality of this product exceeded my expectations. It's durable, well-designed, and built to last. Definitely worth the investment!",
+      "The quality of the streaming service is top-notch. I can watch games in high definition without any interruptions. This website is a must-use for any WC2030 fan!",
   },
 ];
 
@@ -110,9 +110,7 @@ export default function Testimonials() {
           Testimonials
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary" }}>
-          See what our customers love about our products. Discover how we excel
-          in efficiency, durability, and satisfaction. Join us for quality,
-          innovation, and reliable support.
+        See what our users love about our platform. Discover how we excel in seamless ticket purchasing, high-quality streaming, and user satisfaction. Join us for an unmatched WC2030 experience, featuring innovation, reliability, and dedicated support.
         </Typography>
       </Box>
       <Grid container spacing={2}>
