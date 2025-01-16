@@ -69,7 +69,7 @@ export default function AppNavbar() {
               component="h1"
               sx={{ color: "text.primary" }}
             >
-              Dashboard
+              Funfuze
             </Typography>
           </Stack>
           <ColorModeIconDropdown />

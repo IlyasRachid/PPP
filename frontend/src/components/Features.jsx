@@ -15,25 +15,25 @@ import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 const items = [
   {
     icon: <ViewQuiltRoundedIcon />,
-    title: "Ticket Purchasing",
+    title: "Dashboard",
     description:
-      "Secure your seats for all WC2030 games with our easy-to-use ticketing system.",
+      "This item could provide a snapshot of the most important metrics or data points related to the product.",
     imageLight: `url("https://mui.com/static/images/templates/templates-images/dash-light.png")`,
     imageDark: `url("https://mui.com/static/images/templates/templates-images/dash-dark.png")`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
-    title: "Live Streaming",
+    title: "Mobile integration",
     description:
-      "Watch every game live in high definition, available on multiple devices.",
+      "This item could provide information about the mobile app version of the product.",
     imageLight: `url("https://mui.com/static/images/templates/templates-images/mobile-light.png")`,
     imageDark: `url("https://mui.com/static/images/templates/templates-images/mobile-dark.png")`,
   },
   {
     icon: <DevicesRoundedIcon />,
-    title: "Multi-Platform Access",
+    title: "Available on all platforms",
     description:
-      "Access our services on web, mobile, and desktop platforms.",
+      "This item could let users know the product is available on all platforms, such as web, mobile, and desktop.",
     imageLight: `url("https://mui.com
     /static/images/templates/templates-images/devices-light.png")`,
     imageDark: `url("https://mui.com/static/images/templates/templates-images/devices-dark.png")`,
@@ -159,9 +159,9 @@ export default function Features() {
           variant="body1"
           sx={{ color: "text.secondary", mb: { xs: 2, sm: 4 } }}
         >
-          Discover the key features of our platform designed to enhance your WC2030 experience
-
-
+          Provide a brief overview of the key features of the product. For
+          example, you could list the number of features, their types or
+          benefits, and add-ons.
         </Typography>
       </Box>
       <Box
