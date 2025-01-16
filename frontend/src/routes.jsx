@@ -1,0 +1,32 @@
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/SignIn";
+import SignupPage from "./pages/SignUp";
+import TicketListPage from "./pages/TicketListPage";
+import MatchListPage from "./pages/MatchListPage";
+import ProfilePage from "./pages/ProfilePage";
+import LandingPage from "./pages/LandingPage";
+import ProtectedRoute from "./components/protectedRoute";
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/tickets" element={<TicketListPage />} />
+      <Route path="/matches" element={<MatchListPage />} />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+};
+
+export default AppRoutes;
