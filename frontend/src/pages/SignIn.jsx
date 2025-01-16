@@ -15,6 +15,7 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "../components/ForgotPassword";
 import AppTheme from "../shared-theme/AppTheme";
+import Sitemark from "../components/SitemarkIcon";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
 import {
   GoogleIcon,
@@ -126,7 +127,7 @@ export default function SignIn(props) {
           sx={{ position: "fixed", top: "1rem", right: "1rem" }}
         />
         <Card variant="outlined">
-          <SitemarkIcon />
+          <Sitemark  width={100} height={100} />
           <Typography
             component="h1"
             variant="h4"
