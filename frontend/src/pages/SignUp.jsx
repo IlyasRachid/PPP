@@ -14,7 +14,6 @@ import Stack from "@mui/material/Stack";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../shared-theme/AppTheme";
-import Sitemark from "../components/SitemarkIcon";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
 import {
   GoogleIcon,
@@ -42,12 +41,9 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
-  height: "100%", // Simplified height for debugging
+  height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
   minHeight: "100%",
   padding: theme.spacing(2),
-  overflow: "auto", // Ensure overflow is applied
-  position: "relative", // Add relative positioning for pseudo-element
-  flexGrow: 1, // Ensure it grows in a flex container
   [theme.breakpoints.up("sm")]: {
     padding: theme.spacing(4),
   },
@@ -72,15 +68,12 @@ export default function SignUp(props) {
   const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = React.useState(false);
-  const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
 
   const validateInputs = () => {
     const email = document.getElementById("email");
     const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
     const name = document.getElementById("name");
 
     let isValid = true;
@@ -103,15 +96,6 @@ export default function SignUp(props) {
       setPasswordErrorMessage("");
     }
 
-    if (password.value !== confirmPassword.value) {
-      setConfirmPasswordError(true);
-      setConfirmPasswordErrorMessage("Passwords do not match.");
-      isValid = false;
-    } else {
-      setConfirmPasswordError(false);
-      setConfirmPasswordErrorMessage("");
-    }
-
     if (!name.value || name.value.length < 1) {
       setNameError(true);
       setNameErrorMessage("Name is required.");
@@ -125,7 +109,7 @@ export default function SignUp(props) {
   };
 
   const handleSubmit = (event) => {
-    if (!validateInputs()) {
+    if (nameError || emailError || passwordError) {
       event.preventDefault();
       return;
     }
@@ -144,7 +128,7 @@ export default function SignUp(props) {
       <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
       <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <Sitemark  width={100} height={100} />
+          <SitemarkIcon />
           <Typography
             component="h1"
             variant="h4"
@@ -200,22 +184,6 @@ export default function SignUp(props) {
                 error={passwordError}
                 helperText={passwordErrorMessage}
                 color={passwordError ? "error" : "primary"}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
-              <TextField
-                required
-                fullWidth
-                name="confirmPassword"
-                placeholder="••••••"
-                type="password"
-                id="confirmPassword"
-                autoComplete="new-password"
-                variant="outlined"
-                error={confirmPasswordError}
-                helperText={confirmPasswordErrorMessage}
-                color={confirmPasswordError ? "error" : "primary"}
               />
             </FormControl>
             <FormControlLabel
