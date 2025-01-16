@@ -31,120 +31,111 @@ export default function FAQ() {
       }}
     >
       <Typography
-        component="h2"
-        variant="h4"
-        sx={{
-          color: 'text.primary',
-          width: { sm: '100%', md: '60%' },
-          textAlign: { sm: 'left', md: 'center' },
-        }}
-      >
-        Frequently asked questions
+  component="h2"
+  variant="h4"
+  sx={{
+    color: 'text.primary',
+    width: { sm: '100%', md: '60%' },
+    textAlign: { sm: 'left', md: 'center' },
+  }}
+>
+  Frequently Asked Questions
+</Typography>
+<Box sx={{ width: '100%' }}>
+  <Accordion
+    expanded={expanded.includes('panel1')}
+    onChange={handleChange('panel1')}
+  >
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel1d-content"
+      id="panel1d-header"
+    >
+      <Typography component="span" variant="subtitle2">
+        How can I purchase tickets for WC2030 matches?
       </Typography>
-      <Box sx={{ width: '100%' }}>
-        <Accordion
-          expanded={expanded.includes('panel1')}
-          onChange={handleChange('panel1')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist you
-              promptly.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel2')}
-          onChange={handleChange('panel2')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2d-content"
-            id="panel2d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              Can I return the product if it doesn&apos;t meet my expectations?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              Absolutely! We offer a hassle-free return policy. If you&apos;re not
-              completely satisfied, you can return the product within [number of
-              days] days for a full refund or exchange.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel3')}
-          onChange={handleChange('panel3')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3d-content"
-            id="panel3d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              What makes your product stand out from others in the market?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              Our product distinguishes itself through its adaptability, durability,
-              and innovative features. We prioritize user satisfaction and
-              continually strive to exceed expectations in every aspect.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel4')}
-          onChange={handleChange('panel4')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4d-content"
-            id="panel4d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              Is there a warranty on the product, and what does it cover?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              Yes, our product comes with a [length of warranty] warranty. It covers
-              defects in materials and workmanship. If you encounter any issues
-              covered by the warranty, please contact our customer support for
-              assistance.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography
+        variant="body2"
+        gutterBottom
+        sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+      >
+        You can easily purchase tickets through our website. Simply select the match you want to attend, choose your ticket type, and complete the payment process. You'll receive a digital ticket via email.
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+  <Accordion
+    expanded={expanded.includes('panel2')}
+    onChange={handleChange('panel2')}
+  >
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel2d-content"
+      id="panel2d-header"
+    >
+      <Typography component="span" variant="subtitle2">
+        Can I stream WC2030 games online?
+      </Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography
+        variant="body2"
+        gutterBottom
+        sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+      >
+        Yes, our platform offers live streaming of all WC2030 games. You can watch the matches on any device with an internet connection.
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+  <Accordion
+    expanded={expanded.includes('panel3')}
+    onChange={handleChange('panel3')}
+  >
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel3d-content"
+      id="panel3d-header"
+    >
+      <Typography component="span" variant="subtitle2">
+        What should I do if I have issues with my ticket or streaming?
+      </Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography
+        variant="body2"
+        gutterBottom
+        sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+      >
+        If you encounter any issues, please contact our customer support team at <Link href="mailto:support@wc2030.com">support@wc2030.com</Link> or call our toll-free number. We're here to help!
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+  <Accordion
+    expanded={expanded.includes('panel4')}
+    onChange={handleChange('panel4')}
+  >
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel4d-content"
+      id="panel4d-header"
+    >
+      <Typography component="span" variant="subtitle2">
+        Are there different types of tickets available?
+      </Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography
+        variant="body2"
+        gutterBottom
+        sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+      >
+        Yes, we offer Standard, Premium, and VIP tickets. Each type provides different levels of access and benefits, so you can choose the one that best suits your needs.
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+</Box>
+        
     </Container>
   );
 }

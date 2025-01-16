@@ -14,42 +14,43 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 const tiers = [
   {
-    title: 'Free',
-    price: '0',
+    title: 'Standard Ticket',
+    price: '50',
     description: [
-      '10 users included',
-      '2 GB of storage',
-      'Help center access',
-      'Email support',
+      'Access to one group stage match',
+      'Standard seating',
+      'Email support for ticket inquiries',
+      'Digital ticket delivery',
     ],
-    buttonText: 'Sign up for free',
+    buttonText: 'Buy now',
     buttonVariant: 'outlined',
     buttonColor: 'primary',
   },
   {
-    title: 'Professional',
-    subheader: 'Recommended',
-    price: '15',
+    title: 'Premium Ticket',
+    subheader: 'Most Popular',
+    price: '120',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
+      'Access to one knockout stage match',
+      'Premium seating with better views',
       'Priority email support',
-      'Dedicated team',
-      'Best deals',
+      'Exclusive WC2030 merchandise discount',
+      'Digital ticket delivery',
     ],
-    buttonText: 'Start now',
+    buttonText: 'Get your ticket',
     buttonVariant: 'contained',
     buttonColor: 'secondary',
   },
   {
-    title: 'Enterprise',
-    price: '30',
+    title: 'VIP Ticket',
+    price: '250',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      'Access to the final match',
+      'VIP seating with the best views',
+      'Dedicated customer support',
+      'Complimentary WC2030 merchandise',
+      'Exclusive lounge access',
+      'Digital ticket delivery',
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
@@ -77,19 +78,17 @@ export default function Pricing() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography
+       <Typography
           component="h2"
           variant="h4"
           gutterBottom
           sx={{ color: 'text.primary' }}
         >
-          Pricing
+          Ticket Pricing
         </Typography>
         <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-          Quickly build an effective pricing table for your potential customers with
-          this layout. <br />
-          It&apos;s built with default Material UI components with little
-          customization.
+          Explore our flexible ticket options designed to suit every fan. Whether you're watching the group stages or the final, we have a plan for you. <br />
+          Choose from Standard, Premium, or VIP tickets to enjoy the best of WC2030 in Morocco.
         </Typography>
       </Box>
       <Grid
@@ -161,7 +160,7 @@ export default function Pricing() {
                     ${tier.price}
                   </Typography>
                   <Typography component="h3" variant="h6">
-                    &nbsp; per month
+                    &nbsp; per game
                   </Typography>
                 </Box>
                 <Divider sx={{ my: 2, opacity: 0.8, borderColor: 'divider' }} />

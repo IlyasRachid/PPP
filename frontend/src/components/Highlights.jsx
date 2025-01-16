@@ -15,39 +15,39 @@ import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 const items = [
   {
     icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
+    title: 'Seamless Integration',
     description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+      "Our platform effortlessly connects you to all WC2030 games, whether you're buying tickets or streaming live. Experience smooth transitions and easy navigation across all devices.",
   },
   {
     icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
+    title: 'Robust Performance',
     description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+      'Built to handle high demand, our platform ensures you never miss a moment of the action. Enjoy uninterrupted streaming and quick ticket purchases, even during peak times.',
   },
   {
     icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
+    title: 'User-Friendly Design',
     description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+      "Navigate our platform with ease, thanks to an intuitive interface designed for all users. Whether you're tech-savvy or a first-time user, you'll find everything you need in just a few clicks.",
   },
   {
     icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
+    title: 'Cutting-Edge Innovation',
     description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+      'Stay ahead with features that set new standards in online ticketing and live streaming. From real-time updates to exclusive content, we provide a comprehensive WC2030 experience.',
   },
   {
     icon: <SupportAgentRoundedIcon />,
     title: 'Reliable support',
     description:
-      'Count on our responsive customer support, offering assistance that goes beyond the purchase.',
+      "Count on our responsive customer support team, available to assist you with any issues or questions. We're here to ensure your experience is smooth and enjoyable from start to finish.",
   },
   {
     icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
+    title: 'Attention to Detail',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Enjoy a meticulously crafted platform where every feature is designed to enhance your WC2030 experience. From personalized notifications to easy payment options, we’ve thought of everything.',
   },
 ];
 
@@ -81,9 +81,7 @@ export default function Highlights() {
             Highlights
           </Typography>
           <Typography variant="body1" sx={{ color: 'grey.400' }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
+          Discover why our platform stands out: seamless integration, robust performance, user-friendly design, and cutting-edge innovation. Enjoy reliable customer support and attention to every detail.
           </Typography>
         </Box>
         <Grid container spacing={2}>
