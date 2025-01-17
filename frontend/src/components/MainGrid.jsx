@@ -41,6 +41,7 @@ export default function FixedBottomNavigation() {
       sx={{
         pb: 7,
         width: "100%",
+        mb: 0,
       }}
       ref={ref}
     >
@@ -58,14 +59,25 @@ export default function FixedBottomNavigation() {
             <Box
               sx={{
                 width: "100%",
-                height: "60px",
+                height: "150px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "center",
                 gap: 2,
                 textAlign: "center",
+                backgroundColor: "background.paper",
+                pl: 10,
+                pr: 10,
+                borderRadius: 1,
+                ":hover": {
+                  boxShadow: 1,
+                  borderRadius: 1,
+                  backgroundColor: "background.default",
+                },
               }}
             >
               <Avatar
+<<<<<<< HEAD
   alt={team1}
   src={team1}
   sx={{
@@ -88,6 +100,45 @@ export default function FixedBottomNavigation() {
     },
   }}
 />
+=======
+                alt={team1}
+                src={team1}
+                sx={{
+                  width: "120px",
+                  height: "80px",
+                  "& img": {
+                    objectFit: "contain",
+                  },
+                }}
+              />
+              <ListItemText
+                primary={title}
+                secondary={date}
+                sx={{
+                  width: "100%",
+                  textAlign: "center",
+                  "& .MuiListItemText-primary": {
+                    fontSize: "1rem",
+                    marginBottom: "0.3rem",
+                    fontFamily: "Roboto",
+                  },
+                  "& .MuiListItemText-secondary": {
+                    fontSize: "1rem",
+                  },
+                }}
+              />
+              <Avatar
+                alt={team2}
+                src={team2}
+                sx={{
+                  width: "120px", // Largeur personnalisée
+                  height: "80px", // Hauteur personnalisée
+                  "& img": {
+                    objectFit: "contain", // Affiche toute l'image sans la recadrer
+                  },
+                }}
+              />
+>>>>>>> b9dabc66c5d52186b9119950c58a7ee756c22cdb
             </Box>
           </ListItemButton>
         ))}
@@ -111,4 +162,8 @@ export default function FixedBottomNavigation() {
       </Paper>
     </Box>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b9dabc66c5d52186b9119950c58a7ee756c22cdb
