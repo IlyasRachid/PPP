@@ -5,19 +5,22 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
-import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
-import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
+
+// Importer les nouvelles icônes
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import ConfirmationNumberRoundedIcon from '@mui/icons-material/ConfirmationNumberRounded';
+import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
+import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 
+// Mettre à jour la liste des éléments avec les nouvelles icônes
 const mainListItems = [
-  { text: 'Home', icon: <HomeRoundedIcon /> },
-  { text: 'Analytics', icon: <AnalyticsRoundedIcon /> },
-  { text: 'Clients', icon: <PeopleRoundedIcon /> },
-  { text: 'Tasks', icon: <AssignmentRoundedIcon /> },
+  { text: 'Home', icon: <DashboardRoundedIcon /> }, // Icône modifiée
+  { text: 'Mytickets', icon: <ConfirmationNumberRoundedIcon /> }, // Icône modifiée
+  { text: 'News', icon: <ArticleRoundedIcon /> }, // Icône modifiée
+  { text: 'Streaming', icon: <LiveTvRoundedIcon /> }, // Icône modifiée
 ];
 
 const secondaryListItems = [
