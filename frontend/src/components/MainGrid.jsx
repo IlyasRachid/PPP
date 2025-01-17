@@ -77,30 +77,6 @@ export default function FixedBottomNavigation() {
               }}
             >
               <Avatar
-<<<<<<< HEAD
-  alt={team1}
-  src={team1}
-  sx={{
-    width: "100px",      // Largeur personnalisée
-    height: "60px",      // Hauteur personnalisée
-    "& img": {
-      objectFit: "contain", // Affiche toute l'image sans la recadrer
-    },
-  }}
-/>
-              <ListItemText primary={title} secondary={date} />
-              <Avatar
-  alt={team2}
-  src={team2}
-  sx={{
-    width: "100px",      // Largeur personnalisée
-    height: "60px",      // Hauteur personnalisée
-    "& img": {
-      objectFit: "contain", // Affiche toute l'image sans la recadrer
-    },
-  }}
-/>
-=======
                 alt={team1}
                 src={team1}
                 sx={{
@@ -131,14 +107,13 @@ export default function FixedBottomNavigation() {
                 alt={team2}
                 src={team2}
                 sx={{
-                  width: "120px", // Largeur personnalisée
-                  height: "80px", // Hauteur personnalisée
+                  width: "120px",
+                  height: "80px",
                   "& img": {
-                    objectFit: "contain", // Affiche toute l'image sans la recadrer
+                    objectFit: "contain",
                   },
                 }}
               />
->>>>>>> b9dabc66c5d52186b9119950c58a7ee756c22cdb
             </Box>
           </ListItemButton>
         ))}
@@ -162,8 +137,4 @@ export default function FixedBottomNavigation() {
       </Paper>
     </Box>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b9dabc66c5d52186b9119950c58a7ee756c22cdb
