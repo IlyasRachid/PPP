@@ -1,0 +1,236 @@
+{
+  "matches": [
+    {
+      "team1": "Paris Saint-Germain",
+      "team2": "Olympique de Marseille",
+      "date": "2023-10-15",
+      "time": "20:00",
+      "team1Image": "/images/teams/psg.png",
+      "team2Image": "/images/teams/om.png"
+    },
+    {
+      "team1": "Real Madrid",
+      "team2": "FC Barcelona",
+      "date": "2023-10-16",
+      "time": "21:00",
+      "team1Image": "/images/teams/real_madrid.png",
+      "team2Image": "/images/teams/barcelona.png"
+    },
+    {
+      "team1": "Manchester United",
+      "team2": "Liverpool FC",
+      "date": "2023-10-17",
+      "time": "19:45",
+      "team1Image": "/images/teams/man_united.png",
+      "team2Image": "/images/teams/liverpool.png"
+    },
+    {
+      "team1": "Bayern Munich",
+      "team2": "Borussia Dortmund",
+      "date": "2023-10-18",
+      "time": "20:30",
+      "team1Image": "/images/teams/bayern_munich.png",
+      "team2Image": "/images/teams/borussia_dortmund.png"
+    },
+    {
+      "team1": "Juventus",
+      "team2": "AC Milan",
+      "date": "2023-10-19",
+      "time": "20:45",
+      "team1Image": "/images/teams/juventus.png",
+      "team2Image": "/images/teams/ac_milan.png"
+    },
+    {
+      "team1": "Chelsea FC",
+      "team2": "Arsenal FC",
+      "date": "2023-10-20",
+      "time": "19:30",
+      "team1Image": "/images/teams/chelsea.png",
+      "team2Image": "/images/teams/arsenal.png"
+    },
+    {
+      "team1": "Atletico Madrid",
+      "team2": "Sevilla FC",
+      "date": "2023-10-21",
+      "time": "21:00",
+      "team1Image": "/images/teams/atletico_madrid.png",
+      "team2Image": "/images/teams/sevilla.png"
+    },
+    {
+      "team1": "Inter Milan",
+      "team2": "AS Roma",
+      "date": "2023-10-22",
+      "time": "20:45",
+      "team1Image": "/images/teams/inter_milan.png",
+      "team2Image": "/images/teams/as_roma.png"
+    },
+    {
+      "team1": "Manchester City",
+      "team2": "Tottenham Hotspur",
+      "date": "2023-10-23",
+      "time": "20:00",
+      "team1Image": "/images/teams/man_city.png",
+      "team2Image": "/images/teams/tottenham.png"
+    },
+    {
+      "team1": "FC Porto",
+      "team2": "Benfica",
+      "date": "2023-10-24",
+      "time": "20:30",
+      "team1Image": "/images/teams/porto.png",
+      "team2Image": "/images/teams/benfica.png"
+    },
+    {
+      "team1": "Ajax Amsterdam",
+      "team2": "PSV Eindhoven",
+      "date": "2023-10-25",
+      "time": "19:45",
+      "team1Image": "/images/teams/ajax.png",
+      "team2Image": "/images/teams/psv.png"
+    },
+    {
+      "team1": "Celtic FC",
+      "team2": "Rangers FC",
+      "date": "2023-10-26",
+      "time": "20:00",
+      "team1Image": "/images/teams/celtic.png",
+      "team2Image": "/images/teams/rangers.png"
+    },
+    {
+      "team1": "FC Barcelona",
+      "team2": "Atletico Madrid",
+      "date": "2023-11-04",
+      "time": "20:45",
+      "team1Image": "/images/teams/barcelona.png",
+      "team2Image": "/images/teams/atletico_madrid.png"
+    },
+    {
+      "team1": "Liverpool FC",
+      "team2": "Chelsea FC",
+      "date": "2023-11-05",
+      "time": "19:30",
+      "team1Image": "/images/teams/liverpool.png",
+      "team2Image": "/images/teams/chelsea.png"
+    },
+    {
+      "team1": "AC Milan",
+      "team2": "Inter Milan",
+      "date": "2023-11-06",
+      "time": "20:00",
+      "team1Image": "/images/teams/ac_milan.png",
+      "team2Image": "/images/teams/inter_milan.png"
+    },
+    {
+      "team1": "Borussia Dortmund",
+      "team2": "Bayern Munich",
+      "date": "2023-11-07",
+      "time": "20:30",
+      "team1Image": "/images/teams/borussia_dortmund.png",
+      "team2Image": "/images/teams/bayern_munich.png"
+    },
+    {
+      "team1": "Arsenal FC",
+      "team2": "Manchester United",
+      "date": "2023-11-08",
+      "time": "19:45",
+      "team1Image": "/images/teams/arsenal.png",
+      "team2Image": "/images/teams/man_united.png"
+    },
+    {
+      "team1": "Olympique Lyonnais",
+      "team2": "AS Monaco",
+      "date": "2023-11-09",
+      "time": "20:00",
+      "team1Image": "/images/teams/lyon.png",
+      "team2Image": "/images/teams/monaco.png"
+    },
+    {
+      "team1": "FC Bayern Munich",
+      "team2": "RB Leipzig",
+      "date": "2023-11-10",
+      "time": "20:30",
+      "team1Image": "/images/teams/bayern_munich.png",
+      "team2Image": "/images/teams/rb_leipzig.png"
+    },
+    {
+      "team1": "Juventus",
+      "team2": "Napoli",
+      "date": "2023-11-11",
+      "time": "20:45",
+      "team1Image": "/images/teams/juventus.png",
+      "team2Image": "/images/teams/napoli.png"
+    },
+    {
+      "team1": "FC Barcelona",
+      "team2": "Valencia CF",
+      "date": "2023-11-12",
+      "time": "21:00",
+      "team1Image": "/images/teams/barcelona.png",
+      "team2Image": "/images/teams/valencia.png"
+    },
+    {
+      "team1": "Manchester City",
+      "team2": "Leicester City",
+      "date": "2023-11-13",
+      "time": "19:30",
+      "team1Image": "/images/teams/man_city.png",
+      "team2Image": "/images/teams/leicester.png"
+    },
+    {
+      "team1": "Paris Saint-Germain",
+      "team2": "Lille OSC",
+      "date": "2023-11-14",
+      "time": "20:00",
+      "team1Image": "/images/teams/psg.png",
+      "team2Image": "/images/teams/lille.png"
+    },
+    {
+      "team1": "Real Madrid",
+      "team2": "Sevilla FC",
+      "date": "2023-11-15",
+      "time": "20:45",
+      "team1Image": "/images/teams/real_madrid.png",
+      "team2Image": "/images/teams/sevilla.png"
+    },
+    {
+      "team1": "Tottenham Hotspur",
+      "team2": "Arsenal FC",
+      "date": "2023-11-16",
+      "time": "19:45",
+      "team1Image": "/images/teams/tottenham.png",
+      "team2Image": "/images/teams/arsenal.png"
+    },
+    {
+      "team1": "AC Milan",
+      "team2": "Juventus",
+      "date": "2023-11-17",
+      "time": "20:00",
+      "team1Image": "/images/teams/ac_milan.png",
+      "team2Image": "/images/teams/juventus.png"
+    },
+    {
+      "team1": "FC Porto",
+      "team2": "Sporting CP",
+      "date": "2023-11-18",
+      "time": "20:30",
+      "team1Image": "/images/teams/porto.png",
+      "team2Image": "/images/teams/sporting_cp.png"
+    },
+    {
+      "team1": "Ajax Amsterdam",
+      "team2": "Feyenoord",
+      "date": "2023-11-19",
+      "time": "19:45",
+      "team1Image": "/images/teams/ajax.png",
+      "team2Image": "/images/teams/feyenoord.png"
+    },
+    {
+      "team1": "Celtic FC",
+      "team2": "Heart of Midlothian",
+      "date": "2023-11-20",
+      "time": "20:00",
+      "team1Image": "/images/teams/celtic.png",
+      "team2Image": "/images/teams/hearts.png"
+    }
+  ]
+}
