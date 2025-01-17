@@ -13,12 +13,17 @@ import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 
-function refreshMessages() {
-  const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+// Import the JSON data (assuming it's in the same directory)
+import matchesData from "../Data/matches.json";
 
-  return Array.from(new Array(50)).map(
-    () => messageExamples[getRandomInt(messageExamples.length)]
-  );
+function refreshMessages() {
+  // Use the matches data directly from the JSON file
+  return matchesData.matches.map((match) => ({
+    title: `${match.team1} vs ${match.team2}`,
+    date: `${match.date} at ${match.time}`,
+    team1: match.team1Image,
+    team2: match.team2Image,
+  }));
 }
 
 export default function FixedBottomNavigation() {
@@ -36,6 +41,7 @@ export default function FixedBottomNavigation() {
       sx={{
         pb: 7,
         width: "100%",
+        mb: 0,
       }}
       ref={ref}
     >
@@ -53,16 +59,61 @@ export default function FixedBottomNavigation() {
             <Box
               sx={{
                 width: "100%",
-                height: "60px",
+                height: "150px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "center",
                 gap: 2,
                 textAlign: "center",
+                backgroundColor: "background.paper",
+                pl: 10,
+                pr: 10,
+                borderRadius: 1,
+                ":hover": {
+                  boxShadow: 1,
+                  borderRadius: 1,
+                  backgroundColor: "background.default",
+                },
               }}
             >
-              <Avatar alt="Profile Picture" src={team1 || ""} />
-              <ListItemText primary={title} secondary={date} />
-              <Avatar alt="Profile Picture" src={team2 || ""} />
+              <Avatar
+                alt={team1}
+                src={team1}
+                sx={{
+                  width: "120px",
+                  height: "80px",
+                  "& img": {
+                    objectFit: "contain",
+                  },
+                }}
+              />
+              <ListItemText
+                primary={title}
+                secondary={date}
+                sx={{
+                  width: "100%",
+                  textAlign: "center",
+                  "& .MuiListItemText-primary": {
+                    fontSize: "1rem",
+                    marginBottom: "0.3rem",
+                    fontFamily: "Roboto",
+                  },
+                  "& .MuiListItemText-secondary": {
+                    fontSize: "1rem",
+                  },
+                }}
+              />
+              <Avatar
+                alt={team2}
+                src={team2}
+                sx={{
+                  width: "120px", // Largeur personnalisée
+                  height: "80px", // Hauteur personnalisée
+                  "& img": {
+                    objectFit: "contain", // Affiche toute l'image sans la recadrer
+                  },
+                }}
+              />
             </Box>
           </ListItemButton>
         ))}
@@ -87,30 +138,3 @@ export default function FixedBottomNavigation() {
     </Box>
   );
 }
-
-const messageExamples = [
-  {
-    title: "Real Madrid Vs Barcelona",
-    date: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
-    team1: "/static/images/avatar/5.jpg",
-    team2: "/static/images/avatar/5.jpg",
-  },
-  {
-    title: "Bayern Munich Vs Borussia Dortmund",
-    date: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
-    team1: "/static/images/avatar/5.jpg",
-    team2: "/static/images/avatar/5.jpg",
-  },
-  {
-    title: "Manchester United Vs Manchester City",
-    date: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
-    team1: "/static/images/avatar/5.jpg",
-    team2: "/static/images/avatar/5.jpg",
-  },
-  {
-    title: "Chelsea Vs Arsenal",
-    date: "",
-    team1: "/static/images/avatar/5.jpg",
-    team2: "/static/images/avatar/5.jpg",
-  },
-];
