@@ -28,7 +28,7 @@ export default function Dashboard(props) {
       <Box sx={{ display: "flex" }}>
         <SideMenu />
         <AppNavbar />
-
+        {/* Main content */}
         <Box
           component="main"
           sx={(theme) => ({

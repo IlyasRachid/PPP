@@ -15,8 +15,13 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "../components/ForgotPassword";
 import AppTheme from "../shared-theme/AppTheme";
+import Sitemark from "../components/SitemarkIcon";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
-import { GoogleIcon } from "../components/CustomIcons";
+import {
+  GoogleIcon,
+  FacebookIcon,
+  SitemarkIcon,
+} from "../components/CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -122,6 +127,7 @@ export default function SignIn(props) {
           sx={{ position: "fixed", top: "1rem", right: "1rem" }}
         />
         <Card variant="outlined">
+          <Sitemark  width={100} height={100} />
           <Typography
             component="h1"
             variant="h4"
@@ -207,7 +213,14 @@ export default function SignIn(props) {
             >
               Sign in with Google
             </Button>
-
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => alert("Sign in with Facebook")}
+              startIcon={<FacebookIcon />}
+            >
+              Sign in with Facebook
+            </Button>
             <Typography sx={{ textAlign: "center" }}>
               Don&apos;t have an account?{" "}
               <Link href="/signup" variant="body2" sx={{ alignSelf: "center" }}>
