@@ -49,7 +49,7 @@ export default function Dashboard(props) {
             }}
           >
             <Header />
-            <MainGrid />
+            {/* <MainGrid /> */}
           </Stack>
         </Box>
       </Box>

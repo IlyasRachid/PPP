@@ -1,9 +1,8 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
 
 export default function CardAlert() {
   return (
@@ -11,10 +10,10 @@ export default function CardAlert() {
       <CardContent>
         <AutoAwesomeRoundedIcon fontSize="small" />
         <Typography gutterBottom sx={{ fontWeight: 600 }}>
-          Plan about to expire
+          Promo code
         </Typography>
-        <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-          Enjoy 10% off when renewing your plan today.
+        <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+          Enter a promo code and enjoy 10% off.
         </Typography>
         <Button variant="contained" size="small" fullWidth>
           Get the discount

@@ -1,12 +1,12 @@
 import SvgIcon from "@mui/material/SvgIcon";
 
-export default function SitemarkIcon({ width = 70, height = 50}) {
+export default function SitemarkIcon({ width = 100, height = 100 }) {
   return (
     <SvgIcon sx={{ width, height, mr: 0 }}>
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1000 1000"
+        viewBox="500 300 800 1000"
         preserveAspectRatio="xMidYMid meet"
       >
         <g fill="#f6f5f6">
