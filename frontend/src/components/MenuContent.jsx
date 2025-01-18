@@ -11,6 +11,9 @@ import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
+import ConfirmationNumberRoundedIcon from '@mui/icons-material/ConfirmationNumberRounded';
+import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
+import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 
 const mainListItems = [
   { text: "Home", icon: <HomeRoundedIcon /> },
