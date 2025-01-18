@@ -17,6 +17,9 @@ const mainListItems = [
   { text: "Recent", icon: <AssignmentRoundedIcon /> },
   { text: "Most watched", icon: <AnalyticsRoundedIcon /> },
   { text: "Upcoming", icon: <PeopleRoundedIcon /> },
+  { text: 'Mytickets', icon: <ConfirmationNumberRoundedIcon /> }, 
+  { text: 'News', icon: <ArticleRoundedIcon /> }, 
+  { text: 'Streaming', icon: <LiveTvRoundedIcon /> },
 ];
 
 const secondaryListItems = [
