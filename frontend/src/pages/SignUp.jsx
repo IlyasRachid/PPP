@@ -14,13 +14,8 @@ import Stack from "@mui/material/Stack";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../shared-theme/AppTheme";
-import Sitemark from "../components/SitemarkIcon";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
-import {
-  GoogleIcon,
-  FacebookIcon,
-  SitemarkIcon,
-} from "../components/CustomIcons";
+import { GoogleIcon } from "../components/CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -42,14 +37,14 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
-  height: "100%", // Simplified height for debugging
+  height: "100%",
   minHeight: "100%",
   padding: theme.spacing(2),
-  overflow: "auto", // Ensure overflow is applied
-  position: "relative", // Add relative positioning for pseudo-element
-  flexGrow: 1, // Ensure it grows in a flex container
+  overflow: "auto",
+  position: "relative",
+  flexGrow: 1,
   [theme.breakpoints.up("sm")]: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
   },
   "&::before": {
     content: '""',
@@ -73,7 +68,8 @@ export default function SignUp(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [confirmPasswordError, setConfirmPasswordError] = React.useState(false);
-  const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = React.useState("");
+  const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
+    React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
 
@@ -144,7 +140,6 @@ export default function SignUp(props) {
       <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
       <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <Sitemark  width={100} height={100} />
           <Typography
             component="h1"
             variant="h4"
@@ -243,14 +238,7 @@ export default function SignUp(props) {
             >
               Sign up with Google
             </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert("Sign up with Facebook")}
-              startIcon={<FacebookIcon />}
-            >
-              Sign up with Facebook
-            </Button>
+
             <Typography sx={{ textAlign: "center" }}>
               Already have an account?{" "}
               <Link href="/login" variant="body2" sx={{ alignSelf: "center" }}>
