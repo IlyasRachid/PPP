@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 
 // Sample ticket data
 const ticketData = {
