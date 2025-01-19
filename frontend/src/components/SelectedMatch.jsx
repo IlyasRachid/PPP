@@ -3,6 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import AppTheme from "../shared-theme/AppTheme";
+import { useNavigate } from "react-router-dom"; // Import de Navigate
 import {
   chartsCustomizations,
   dataGridCustomizations,
@@ -22,6 +23,7 @@ const xThemeComponents = {
 };
 
 export default function Dashboard(props) {
+  const Navigate = useNavigate(); // Initialiser la fonction Navigate
   const location = useLocation(); // Récupérer les données passées via navigate
   const matchData = location.state; // Données du match sélectionné
 
@@ -160,6 +162,9 @@ export default function Dashboard(props) {
                     <Button
                       variant="contained"
                       color="secondary"
+                      onClick={() => {
+                        Navigate("/checkout");
+                      }} // Ajouter une action pour rediriger vers la page de paiement
                       sx={{
                         width: 200,
                         px: 4,
