@@ -7,24 +7,24 @@ import Typography from '@mui/material/Typography';
 
 const products = [
   {
-    name: 'Professional plan',
-    desc: 'Monthly subscription',
+    name: 'Standard Ticket - Morocco vs Spain',
+    desc: 'Group Stage Match - June 15, 2030',
+    price: '$50.00',
+  },
+  {
+    name: 'WC2030 Official Jersey',
+    desc: 'Size: L, Color: Red',
+    price: '$45.00',
+  },
+  {
+    name: 'Stadium Seat Cushion',
+    desc: 'Comfortable cushion for your seat',
     price: '$15.00',
   },
   {
-    name: 'Dedicated support',
-    desc: 'Included in the Professional plan',
-    price: 'Free',
-  },
-  {
-    name: 'Hardware',
-    desc: 'Devices needed for development',
-    price: '$69.99',
-  },
-  {
-    name: 'Landing page template',
-    desc: 'License',
-    price: '$49.99',
+    name: 'Live Streaming Pass',
+    desc: 'Access to all WC2030 matches online',
+    price: '$30.00',
   },
 ];
 

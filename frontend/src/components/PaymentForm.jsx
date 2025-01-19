@@ -82,37 +82,27 @@ const FormGrid = styled('div')(() => ({
   flexDirection: 'column',
 }));
 
-export default function PaymentForm() {
-  const [paymentType, setPaymentType] = React.useState('creditCard');
-  const [cardNumber, setCardNumber] = React.useState('');
-  const [cvv, setCvv] = React.useState('');
-  const [expirationDate, setExpirationDate] = React.useState('');
-
+export default function PaymentForm({ formValues, onChange }) {
   const handlePaymentTypeChange = (event) => {
-    setPaymentType(event.target.value);
+    onChange({ target: { name: 'paymentType', value: event.target.value } });
   };
 
   const handleCardNumberChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-    if (value.length <= 16) {
-      setCardNumber(formattedValue);
-    }
+    onChange({ target: { name: 'cardNumber', value: event.target.value  } });
   };
 
   const handleCvvChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    if (value.length <= 3) {
-      setCvv(value);
-    }
+   
+    onChange({ target: { name: 'cvv', value: event.target.value } });
   };
 
   const handleExpirationDateChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{2})(?=\d{2})/, '$1/');
-    if (value.length <= 4) {
-      setExpirationDate(formattedValue);
-    }
+   
+    onChange({ target: { name: 'expirationDate', value: event.target.value } });
+  };
+
+  const handleCardNameChange = (event) => {
+    onChange({ target: { name: 'cardName', value: event.target.value } });
   };
 
   return (
@@ -121,7 +111,7 @@ export default function PaymentForm() {
         <RadioGroup
           aria-label="Payment options"
           name="paymentType"
-          value={paymentType}
+          value={formValues.paymentType || 'creditCard'}
           onChange={handlePaymentTypeChange}
           sx={{
             display: 'flex',
@@ -129,9 +119,9 @@ export default function PaymentForm() {
             gap: 2,
           }}
         >
-          <Card selected={paymentType === 'creditCard'}>
+          <Card selected={formValues.paymentType === 'creditCard'}>
             <CardActionArea
-              onClick={() => setPaymentType('creditCard')}
+              onClick={() => onChange({ target: { name: 'paymentType', value: 'creditCard' } })}
               sx={{
                 '.MuiCardActionArea-focusHighlight': {
                   backgroundColor: 'transparent',
@@ -151,7 +141,7 @@ export default function PaymentForm() {
                         color: 'grey.600',
                       }),
                     }),
-                    paymentType === 'creditCard' && {
+                    formValues.paymentType === 'creditCard' && {
                       color: 'primary.main',
                     },
                   ]}
@@ -160,9 +150,9 @@ export default function PaymentForm() {
               </CardContent>
             </CardActionArea>
           </Card>
-          <Card selected={paymentType === 'bankTransfer'}>
+          <Card selected={formValues.paymentType === 'bankTransfer'}>
             <CardActionArea
-              onClick={() => setPaymentType('bankTransfer')}
+              onClick={() => onChange({ target: { name: 'paymentType', value: 'bankTransfer' } })}
               sx={{
                 '.MuiCardActionArea-focusHighlight': {
                   backgroundColor: 'transparent',
@@ -182,7 +172,7 @@ export default function PaymentForm() {
                         color: 'grey.600',
                       }),
                     }),
-                    paymentType === 'bankTransfer' && {
+                    formValues.paymentType === 'bankTransfer' && {
                       color: 'primary.main',
                     },
                   ]}
@@ -193,7 +183,7 @@ export default function PaymentForm() {
           </Card>
         </RadioGroup>
       </FormControl>
-      {paymentType === 'creditCard' && (
+      {formValues.paymentType === 'creditCard' && (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <PaymentContainer>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -225,7 +215,7 @@ export default function PaymentForm() {
                   placeholder="0000 0000 0000 0000"
                   required
                   size="small"
-                  value={cardNumber}
+                  value={formValues.cardNumber || ''}
                   onChange={handleCardNumberChange}
                 />
               </FormGrid>
@@ -239,7 +229,7 @@ export default function PaymentForm() {
                   placeholder="123"
                   required
                   size="small"
-                  value={cvv}
+                  value={formValues.cvv || ''}
                   onChange={handleCvvChange}
                 />
               </FormGrid>
@@ -255,6 +245,8 @@ export default function PaymentForm() {
                   placeholder="John Smith"
                   required
                   size="small"
+                  value={formValues.cardName || ''}
+                  onChange={handleCardNameChange}
                 />
               </FormGrid>
               <FormGrid sx={{ flexGrow: 1 }}>
@@ -267,7 +259,7 @@ export default function PaymentForm() {
                   placeholder="MM/YY"
                   required
                   size="small"
-                  value={expirationDate}
+                  value={formValues.expirationDate || ''}
                   onChange={handleExpirationDateChange}
                 />
               </FormGrid>
@@ -279,7 +271,7 @@ export default function PaymentForm() {
           />
         </Box>
       )}
-      {paymentType === 'bankTransfer' && (
+      {formValues.paymentType === 'bankTransfer' && (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Alert severity="warning" icon={<WarningRoundedIcon />}>
             Your order will be processed once we receive the funds.

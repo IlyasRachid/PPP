@@ -7,15 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type:', detail: 'Visa' },
-  { name: 'Card holder:', detail: 'Mr. John Smith' },
-  { name: 'Card number:', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date:', detail: '04/2024' },
-];
-
-export default function Review() {
+export default function Review({ formValues }) {
   return (
     <Stack spacing={2}>
       <List disablePadding>
@@ -45,32 +37,108 @@ export default function Review() {
           <Typography variant="subtitle2" gutterBottom>
             Shipment details
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
+          <Typography gutterBottom>
+            {formValues.firstName} {formValues.lastName}
+          </Typography>
           <Typography gutterBottom sx={{ color: 'text.secondary' }}>
-            {addresses.join(', ')}
+            {formValues.email}
+          </Typography>
+          <Typography gutterBottom sx={{ color: 'text.secondary' }}>
+            {formValues.phone}
+          </Typography>
+          <Typography gutterBottom sx={{ color: 'text.secondary' }}>
+            {formValues.address}
           </Typography>
         </div>
         <div>
           <Typography variant="subtitle2" gutterBottom>
             Payment details
           </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  useFlexGap
-                  sx={{ width: '100%', mb: 1 }}
-                >
-                  <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                    {payment.name}
-                  </Typography>
-                  <Typography variant="body2">{payment.detail}</Typography>
-                </Stack>
-              </React.Fragment>
-            ))}
-          </Grid>
+          {formValues.paymentType === 'creditCard' && (
+            <Grid container>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Card type:
+                </Typography>
+                <Typography variant="body2">Visa</Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Card holder:
+                </Typography>
+                <Typography variant="body2">{formValues.cardName}</Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Card number:
+                </Typography>
+                <Typography variant="body2">{formValues.cardNumber}</Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Expiry date:
+                </Typography>
+                <Typography variant="body2">{formValues.expirationDate}</Typography>
+              </Stack>
+            </Grid>
+          )}
+          {formValues.paymentType === 'bankTransfer' && (
+            <Grid container>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Bank:
+                </Typography>
+                <Typography variant="body2">Mastercredit</Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Account number:
+                </Typography>
+                <Typography variant="body2">123456789</Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ width: '100%', mb: 1 }}
+              >
+                <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                  Routing number:
+                </Typography>
+                <Typography variant="body2">987654321</Typography>
+              </Stack>
+            </Grid>
+          )}
         </div>
       </Stack>
     </Stack>

@@ -21,27 +21,36 @@ import SitemarkIcon from "../components/SitemarkIcon";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
 
-const steps = ["Shipping address", "Payment details", "Review your order"];
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
+const steps = ["Personnel informations", "Payment details", "Review your order"];
+
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [formValues, setFormValues] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    paymentType: "creditCard",
+    cardNumber: "",
+    cvv: "",
+    expirationDate: "",
+    cardName: "",
+  });
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
+
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -213,7 +222,13 @@ export default function Checkout(props) {
               </Stack>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {activeStep === 0 && (
+                  <AddressForm formValues={formValues} onChange={handleInputChange} />
+                )}
+                {activeStep === 1 && (
+                  <PaymentForm formValues={formValues} onChange={handleInputChange} />
+                )}
+                {activeStep === 2 && <Review formValues={formValues} />}
                 <Box
                   sx={[
                     {
