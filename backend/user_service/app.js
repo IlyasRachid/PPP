@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-
+const cors = require('cors');
 const app = express();
 
 //1- GLOBAL MIDDLEWARES
@@ -20,6 +20,12 @@ app.use(helmet());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Replace with your frontend's URL
+  }),
+);
 
 // Limit requests from same API
 const limiter = rateLimit({

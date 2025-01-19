@@ -67,6 +67,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
+
   // 1) Getting token and check if it's there
   if (
     req.headers.authorization &&
@@ -74,18 +75,21 @@ exports.protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
   }
+
   if (!token) {
+    // Exit immediately after calling `next()`
     return next(
       new appError('You are not logged in! Please log in to get access.', 401),
     );
   }
 
-  // 2) Verification token
+  // 2) Verify the token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   // 3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
+    // Exit immediately after calling `next()`
     return next(
       new appError(
         'The user belonging to this token does no longer exist.',
@@ -96,14 +100,15 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // 4) Check if user changed password after the token was issued
   if (currentUser.changedPasswordAfter(decoded.iat)) {
+    // Exit immediately after calling `next()`
     return next(
       new appError('User recently changed password! Please log in again.', 401),
     );
   }
 
-  // GRANT ACCESS TO PROTECTED ROUTE
+  // 5) Grant access to the protected route
   req.user = currentUser;
-  next();
+  next(); // Continue to the next middleware
 });
 
 exports.restrictTo = (...roles) => {
@@ -193,4 +198,9 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
   // 4) Log user in, send JWT
   createAndSendToken(user, 200, res);
+});
+
+exports.logout = catchAsync((req, res, next) => {
+  res.cookie('jwt', '', { maxAge: 0 });
+  res.status(200).json({ status: 'logged out successfully' });
 });
