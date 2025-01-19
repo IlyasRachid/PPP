@@ -20,7 +20,7 @@ export const useLogout = () => {
       const data = await res.json();
       console.log(data);
       if (data.error) {
-        toast.error(data.message);
+        throw new Error(data.message);
       }
       localStorage.removeItem("user");
       setAuthUser(null);
