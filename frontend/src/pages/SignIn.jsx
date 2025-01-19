@@ -17,6 +17,8 @@ import ForgotPassword from "../components/ForgotPassword";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
 import { GoogleIcon } from "../components/CustomIcons";
+import { useState } from "react";
+import useLogin from "../hooks/useLogin";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -66,6 +68,14 @@ export default function SignIn(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [open, setOpen] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(email, password);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -73,18 +83,6 @@ export default function SignIn(props) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleSubmit = (event) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
   };
 
   const validateInputs = () => {
@@ -102,9 +100,9 @@ export default function SignIn(props) {
       setEmailErrorMessage("");
     }
 
-    if (!password.value || password.value.length < 6) {
+    if (!password.value || password.value.length < 8) {
       setPasswordError(true);
-      setPasswordErrorMessage("Password must be at least 6 characters long.");
+      setPasswordErrorMessage("Password must be at least 8 characters long.");
       isValid = false;
     } else {
       setPasswordError(false);
@@ -140,14 +138,16 @@ export default function SignIn(props) {
               gap: 2,
             }}
           >
-            <FormControl>
+            <FormControl method="post">
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
                 error={emailError}
                 helperText={emailErrorMessage}
+                onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 type="email"
                 name="email"
+                value={email}
                 placeholder="your@email.com"
                 autoComplete="email"
                 autoFocus
@@ -162,6 +162,8 @@ export default function SignIn(props) {
               <TextField
                 error={passwordError}
                 helperText={passwordErrorMessage}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 name="password"
                 placeholder="••••••"
                 type="password"

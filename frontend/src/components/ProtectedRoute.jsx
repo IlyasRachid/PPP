@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../context/authContext";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("isAuthenticated"); // check if user is authenticated (e.g., by checking localStorage or context)
-
-  if (!isAuthenticated) {
+  const { authUser } = useAuthContext();
+  if (!authUser) {
     return <Navigate to="/login" />; // redirect if not authenticated
   }
 

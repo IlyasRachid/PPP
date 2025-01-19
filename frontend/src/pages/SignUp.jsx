@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
@@ -16,6 +17,7 @@ import { styled } from "@mui/material/styles";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeSelect from "../shared-theme/ColorModeSelect";
 import { GoogleIcon } from "../components/CustomIcons";
+import { useSignup } from "../hooks/useSignup";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -72,6 +74,14 @@ export default function SignUp(props) {
     React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+
+  const { signup } = useSignup();
 
   const validateInputs = () => {
     const email = document.getElementById("email");
@@ -120,18 +130,10 @@ export default function SignUp(props) {
     return isValid;
   };
 
-  const handleSubmit = (event) => {
-    if (!validateInputs()) {
-      event.preventDefault();
-      return;
-    }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validateInputs()) return;
+    await signup(inputs);
   };
 
   return (
@@ -155,6 +157,8 @@ export default function SignUp(props) {
             <FormControl>
               <FormLabel htmlFor="name">Full name</FormLabel>
               <TextField
+                value={inputs.name}
+                onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
                 autoComplete="name"
                 name="name"
                 required
@@ -169,6 +173,10 @@ export default function SignUp(props) {
             <FormControl>
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
+                value={inputs.email}
+                onChange={(e) =>
+                  setInputs({ ...inputs, email: e.target.value })
+                }
                 required
                 fullWidth
                 id="email"
@@ -184,6 +192,10 @@ export default function SignUp(props) {
             <FormControl>
               <FormLabel htmlFor="password">Password</FormLabel>
               <TextField
+                value={inputs.password}
+                onChange={(e) =>
+                  setInputs({ ...inputs, password: e.target.value })
+                }
                 required
                 fullWidth
                 name="password"
@@ -200,6 +212,10 @@ export default function SignUp(props) {
             <FormControl>
               <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
               <TextField
+                value={inputs.passwordConfirm}
+                onChange={(e) =>
+                  setInputs({ ...inputs, passwordConfirm: e.target.value })
+                }
                 required
                 fullWidth
                 name="confirmPassword"

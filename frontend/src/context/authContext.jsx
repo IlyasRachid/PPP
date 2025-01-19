@@ -1,31 +1,20 @@
-// src/context/authContext.js
-import { createContext, useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState } from "react";
 
-// Create a Context for authentication
-const AuthContext = createContext();
+export const AuthContext = createContext();
+
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+};
 
 // eslint-disable-next-line react/prop-types
-export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-
-  const login = (userData, token) => {
-    localStorage.setItem("authToken", token);
-    setUser(userData.name);
-    setIsAuthenticated(true);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("authToken");
-    setUser(null);
-    setIsAuthenticated(false);
-  };
-
+export const AuthContextProvider = ({ children }) => {
+  const [authUser, setAuthUser] = useState(
+    JSON.parse(localStorage.getItem("user") || null)
+  );
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ authUser, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;
