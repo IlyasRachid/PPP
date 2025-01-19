@@ -2,8 +2,6 @@ import { alpha } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import Header from "../components/Header";
-
 import AppTheme from "../shared-theme/AppTheme";
 import {
   chartsCustomizations,
@@ -30,7 +28,15 @@ export default function Dashboard(props) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80vh",
+        }}
+      >
         <Box
           component="main"
           sx={(theme) => ({
@@ -50,7 +56,6 @@ export default function Dashboard(props) {
               mt: { xs: 8, md: 0 },
             }}
           >
-            <Header />
             {/* Section pour afficher les détails du match sélectionné */}
             <Box
               sx={{
@@ -60,13 +65,14 @@ export default function Dashboard(props) {
                 justifyContent: "center",
                 gap: 2,
                 width: "100%",
-                maxWidth: 800, // Augmenter la largeur maximale
+                maxWidth: 1000, // Augmenter la largeur maximale
                 mx: "auto",
                 p: 3,
                 backgroundColor: "background.paper",
                 borderRadius: 2,
                 boxShadow: 1,
                 marginTop: "30vh", // Ajuster pour centrer un peu plus bas
+                height: "70vh",
               }}
             >
               {matchData ? ( // Vérifier si des données de match sont disponibles
@@ -142,25 +148,27 @@ export default function Dashboard(props) {
                       variant="contained"
                       color="primary"
                       sx={{
+                        width: 200,
                         px: 4,
                         py: 1.5,
                         fontSize: "1rem",
                         fontWeight: "bold",
                       }}
                     >
-                      Regarder le match
+                      Watch live
                     </Button>
                     <Button
                       variant="contained"
                       color="secondary"
                       sx={{
+                        width: 200,
                         px: 4,
                         py: 1.5,
                         fontSize: "1rem",
                         fontWeight: "bold",
                       }}
                     >
-                      Acheter les tickets
+                      Buy your ticket
                     </Button>
                   </Box>
                 </>
