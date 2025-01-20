@@ -21,6 +21,7 @@ import SitemarkIcon from "../components/SitemarkIcon";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Import de useLocation et Navigate
 
 const steps = [
   "Personnel informations",
@@ -29,9 +30,8 @@ const steps = [
 ];
 
 export default function Checkout(props) {
-  const matchData = location.state;
-
   const Navigate = useNavigate();
+  const location = useLocation();
   const [activeStep, setActiveStep] = React.useState(0);
   const [formValues, setFormValues] = React.useState({
     firstName: "",
@@ -45,7 +45,7 @@ export default function Checkout(props) {
     expirationDate: "",
     cardName: "",
   });
-
+  const matchData = location.state;
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };

@@ -19,19 +19,7 @@ import QRCode from "qrcode";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
 import PropTypes from "prop-types";
-
-// Sample ticket data
-const ticketData = {
-  _id: "ticket1",
-  match_id: "match1",
-  match: "Team A vs Team B",
-  date: "2025-01-20",
-  time: "18:00",
-  stadium: "Stadium Alpha",
-  seat: "Section A, Row 5, Seat 10",
-  price: 50.0,
-  status: "valide",
-};
+import { useLocation } from "react-router-dom"; // Import de useLocation et Navigate
 
 // PDF styles
 const styles = StyleSheet.create({
@@ -136,14 +124,42 @@ TicketDocument.propTypes = {
 
 // Main Component
 const TicketDownloadPage = (props) => {
+  const location = useLocation(); // Récupérer les données passées via navigate
+  const matchData = location.state; // Données du match sélectionné
+
   const [qrCodeUrl, setQrCodeUrl] = useState("");
 
   useEffect(() => {
-    // Générer le QR Code en base64
-    QRCode.toDataURL(JSON.stringify(ticketData))
-      .then((url) => setQrCodeUrl(url))
-      .catch((err) => console.error(err));
-  }, []);
+    if (matchData) {
+      // Générer le QR Code en base64 avec les données du match
+      QRCode.toDataURL(JSON.stringify(matchData))
+        .then((url) => setQrCodeUrl(url))
+        .catch((err) => console.error(err));
+    }
+  }, [matchData]);
+
+  if (!matchData) {
+    return (
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography variant="h6">
+          No match data found. Please select a match first.
+        </Typography>
+      </Box>
+    );
+  }
+
+  // Créer un objet ticketData basé sur matchData
+  const ticketData = {
+    _id: "ticket1", // Vous pouvez générer un ID unique ici
+    match_id: matchData.matchId, // Utiliser l'ID du match
+    match: `${matchData.team1} vs ${matchData.team2}`, // Nom du match
+    date: matchData.date.split(" at ")[0], // Extraire la date
+    time: matchData.date.split(" at ")[1], // Extraire l'heure
+    stadium: "Stadium Alpha", // Vous pouvez remplacer par le stade réel
+    seat: "Section A, Row 5, Seat 10", // Vous pouvez remplacer par le siège réel
+    price: 50.0, // Vous pouvez remplacer par le prix réel
+    status: "valide",
+  };
 
   return (
     <AppTheme {...props}>
@@ -233,17 +249,17 @@ const TicketDownloadPage = (props) => {
               alignItems: "center",
               width: "100%",
               maxWidth: { sm: "100%", md: 600 },
-              mb: 4, // Ajout de marge en bas
+              mb: 4,
             }}
           >
             <Typography
               variant="h5"
               sx={{
                 fontWeight: "bold",
-                alignItems: "center", // Centrer horizontalement
-                color: "primary.main", // Couleur principale
-                textTransform: "uppercase", // Texte en majuscules
-                letterSpacing: "1px", // Espacement des lettres
+                alignItems: "center",
+                color: "primary.main",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
               }}
             >
               Download Your Ticket
@@ -256,9 +272,9 @@ const TicketDownloadPage = (props) => {
               display: { xs: "flex", md: "none" },
               width: "100%",
               backgroundColor: "background.paper",
-              boxShadow: 3, // Ombre plus prononcée
-              borderRadius: 2, // Coins arrondis
-              mb: 4, // Marge en bas
+              boxShadow: 3,
+              borderRadius: 2,
+              mb: 4,
             }}
           >
             <CardContent
@@ -266,8 +282,8 @@ const TicketDownloadPage = (props) => {
                 display: "flex",
                 width: "100%",
                 alignItems: "center",
-                justifyContent: "center", // Centrer verticalement
-                p: 3, // Padding interne
+                justifyContent: "center",
+                p: 3,
               }}
             >
               <div>
@@ -300,9 +316,9 @@ const TicketDownloadPage = (props) => {
               marginBottom: "50px",
               gap: { xs: 5, md: "none" },
               backgroundColor: { xs: "transparent", sm: "background.paper" },
-              p: 4, // Padding interne
-              borderRadius: 2, // Coins arrondis
-              boxShadow: { xs: 0, sm: 3 }, // Ombre pour les écrans plus larges
+              p: 4,
+              borderRadius: 2,
+              boxShadow: { xs: 0, sm: 3 },
             }}
           >
             {/* Section du QR Code */}
@@ -310,14 +326,14 @@ const TicketDownloadPage = (props) => {
               sx={{
                 textAlign: "center",
                 mt: 4,
-                p: 3, // Padding interne
-                backgroundColor: "background.default", // Fond légèrement différent
-                borderRadius: 2, // Coins arrondis
-                boxShadow: 1, // Ombre légère
-                display: "flex", // Utiliser Flexbox
-                flexDirection: "column", // Aligner les éléments verticalement
-                alignItems: "center", // Centrer horizontalement
-                justifyContent: "center", // Centrer verticalement
+                p: 3,
+                backgroundColor: "background.default",
+                borderRadius: 2,
+                boxShadow: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Typography
@@ -325,7 +341,7 @@ const TicketDownloadPage = (props) => {
                 sx={{
                   mb: 2,
                   fontWeight: "bold",
-                  color: "primary.main", // Couleur principale
+                  color: "primary.main",
                 }}
               >
                 Scan QR Code for Ticket Details
@@ -337,8 +353,8 @@ const TicketDownloadPage = (props) => {
                   style={{
                     width: 128,
                     height: 128,
-                    borderRadius: "8px", // Coins arrondis pour l'image
-                    border: "2px solid #3f51b5", // Bordure colorée
+                    borderRadius: "8px",
+                    border: "2px solid #3f51b5",
                   }}
                 />
               )}
@@ -369,13 +385,13 @@ const TicketDownloadPage = (props) => {
                         backgroundColor: "primary.main",
                         color: "white",
                         "&:hover": { backgroundColor: "primary.dark" },
-                        px: 6, // Padding horizontal
-                        py: 2, // Padding vertical
-                        fontSize: "1rem", // Taille de police
-                        fontWeight: "bold", // Texte en gras
-                        borderRadius: "8px", // Coins arrondis
-                        boxShadow: 2, // Ombre légère
-                        transition: "all 0.3s ease", // Animation fluide
+                        px: 6,
+                        py: 2,
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                        borderRadius: "8px",
+                        boxShadow: 2,
+                        transition: "all 0.3s ease",
                       }}
                     >
                       {loading ? "Generating Ticket..." : "Download Ticket"}

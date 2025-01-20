@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import AppTheme from "../shared-theme/AppTheme";
-import { useNavigate } from "react-router-dom"; // Import de Navigate
+import { useNavigate } from "react-router-dom"; // Import de useNavigate
 import {
   chartsCustomizations,
   dataGridCustomizations,
@@ -13,7 +13,7 @@ import {
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button"; // Import du composant Button
-import { useLocation } from "react-router-dom"; // Import de useLocation
+import { useLocation } from "react-router-dom"; // Import de useLocation et Navigate
 
 const xThemeComponents = {
   ...chartsCustomizations,
@@ -23,9 +23,14 @@ const xThemeComponents = {
 };
 
 export default function Dashboard(props) {
-  const Navigate = useNavigate(); // Initialiser la fonction Navigate
+  const navigate = useNavigate(); // Initialiser la fonction navigate
   const location = useLocation(); // Récupérer les données passées via navigate
   const matchData = location.state; // Données du match sélectionné
+
+  // Si matchData est undefined, ne rien afficher (la redirection est gérée par useEffect)
+  if (!matchData) {
+    return null;
+  }
 
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
@@ -77,112 +82,105 @@ export default function Dashboard(props) {
                 height: "70vh",
               }}
             >
-              {matchData ? ( // Vérifier si des données de match sont disponibles
-                <>
-                  <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                    {matchData.team1} vs {matchData.team2}
-                  </Typography>
-                  <Typography variant="h6" component="h2" sx={{ mb: 3 }}>
-                    {matchData.date}
-                  </Typography>
-                  <Box
+              <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+                {matchData.team1} vs {matchData.team2}
+              </Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 3 }}>
+                {matchData.date}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 8, // Augmenter l'espacement entre les équipes
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <Avatar
+                    alt={matchData.team1}
+                    src={matchData.team1Image}
                     sx={{
-                      display: "flex",
-                      gap: 8, // Augmenter l'espacement entre les équipes
-                      alignItems: "center",
+                      width: 120,
+                      height: 80,
+                      "& img": {
+                        objectFit: "contain",
+                      },
                     }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: 1,
-                      }}
-                    >
-                      <Avatar
-                        alt={matchData.team1}
-                        src={matchData.team1Image}
-                        sx={{
-                          width: 120,
-                          height: 80,
-                          "& img": {
-                            objectFit: "contain",
-                          },
-                        }}
-                      />
-                      <Typography variant="h6">{matchData.team1}</Typography>
-                    </Box>
-                    <Typography variant="h4" component="span">
-                      VS
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: 1,
-                      }}
-                    >
-                      <Avatar
-                        alt={matchData.team2}
-                        src={matchData.team2Image}
-                        sx={{
-                          width: 120,
-                          height: 80,
-                          "& img": {
-                            objectFit: "contain",
-                          },
-                        }}
-                      />
-                      <Typography variant="h6">{matchData.team2}</Typography>
-                    </Box>
-                  </Box>
-                  {/* Boutons pour regarder le match et acheter les tickets */}
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 2,
-                      mt: 4,
-                    }}
-                  >
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      sx={{
-                        width: 200,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Watch live
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => {
-                        Navigate("/checkout");
-                      }} // Ajouter une action pour rediriger vers la page de paiement
-                      sx={{
-                        width: 200,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Buy your ticket
-                    </Button>
-                  </Box>
-                </>
-              ) : (
-                // Afficher un message si aucun match n'est sélectionné
-                <Typography variant="h6" sx={{ textAlign: "center" }}>
-                  Aucun match sélectionné
+                  />
+                  <Typography variant="h6">{matchData.team1}</Typography>
+                </Box>
+                <Typography variant="h4" component="span">
+                  VS
                 </Typography>
-              )}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <Avatar
+                    alt={matchData.team2}
+                    src={matchData.team2Image}
+                    sx={{
+                      width: 120,
+                      height: 80,
+                      "& img": {
+                        objectFit: "contain",
+                      },
+                    }}
+                  />
+                  <Typography variant="h6">{matchData.team2}</Typography>
+                </Box>
+              </Box>
+              {/* Boutons pour regarder le match et acheter les tickets */}
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  mt: 4,
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    width: 200,
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Watch live
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/checkout", {
+                      state: matchData, // Transmettre les données du match à la page Checkout
+                    });
+                  }}
+                  sx={{
+                    width: 200,
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Buy your ticket
+                </Button>
+              </Box>
             </Box>
           </Stack>
         </Box>
