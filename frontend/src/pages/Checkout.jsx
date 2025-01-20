@@ -20,10 +20,18 @@ import Review from "../components/Review";
 import SitemarkIcon from "../components/SitemarkIcon";
 import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
+import { useNavigate } from "react-router-dom";
 
-const steps = ["Personnel informations", "Payment details", "Review your order"];
+const steps = [
+  "Personnel informations",
+  "Payment details",
+  "Review your order",
+];
 
 export default function Checkout(props) {
+  const matchData = location.state;
+
+  const Navigate = useNavigate();
   const [activeStep, setActiveStep] = React.useState(0);
   const [formValues, setFormValues] = React.useState({
     firstName: "",
@@ -206,27 +214,37 @@ export default function Checkout(props) {
             </Stepper>
             {activeStep === steps.length ? (
               <Stack spacing={2} useFlexGap>
-                <Typography variant="h1">📦</Typography>
-                <Typography variant="h5">Thank you for your order!</Typography>
+                <Typography variant="h5">Thank you for your trust!</Typography>
                 <Typography variant="body1" sx={{ color: "text.secondary" }}>
                   Your order number is
                   <strong>&nbsp;#140396</strong>. We have emailed your order
-                  confirmation and will update you once its shipped.
+                  confirmation.
                 </Typography>
                 <Button
                   variant="contained"
                   sx={{ alignSelf: "start", width: { xs: "100%", sm: "auto" } }}
+                  onClick={() => {
+                    Navigate("/tickets", {
+                      state: matchData,
+                    });
+                  }}
                 >
-                  Go to my orders
+                  See my ticket
                 </Button>
               </Stack>
             ) : (
               <React.Fragment>
                 {activeStep === 0 && (
-                  <AddressForm formValues={formValues} onChange={handleInputChange} />
+                  <AddressForm
+                    formValues={formValues}
+                    onChange={handleInputChange}
+                  />
                 )}
                 {activeStep === 1 && (
-                  <PaymentForm formValues={formValues} onChange={handleInputChange} />
+                  <PaymentForm
+                    formValues={formValues}
+                    onChange={handleInputChange}
+                  />
                 )}
                 {activeStep === 2 && <Review formValues={formValues} />}
                 <Box

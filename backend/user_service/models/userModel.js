@@ -38,6 +38,12 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same!',
     },
   },
+  tickets: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Ticket', // Reference to the Ticket model
+    },
+  ],
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,

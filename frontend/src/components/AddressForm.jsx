@@ -4,13 +4,27 @@ import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid2";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/material/styles";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 
 const FormGrid = styled(Grid)(() => ({
   display: "flex",
   flexDirection: "column",
 }));
 
+import PropTypes from "prop-types";
+
 export default function AddressForm({ formValues, onChange }) {
+  // Gérer la sélection du type de billet
+  const handleTicketTypeChange = (event) => {
+    onChange({
+      target: {
+        name: "ticketType",
+        value: event.target.value,
+      },
+    });
+  };
+
   return (
     <Grid container spacing={3}>
       <FormGrid size={{ xs: 12, md: 6 }}>
@@ -91,6 +105,34 @@ export default function AddressForm({ formValues, onChange }) {
           onChange={onChange}
         />
       </FormGrid>
+      {/* Ajout du groupe de boutons radio au-dessus de la case à cocher */}
+      <FormGrid size={{ xs: 12 }}>
+        <FormLabel component="legend" required>
+          Ticket Type
+        </FormLabel>
+        <RadioGroup
+          name="ticketType"
+          value={formValues.ticketType || ""}
+          onChange={handleTicketTypeChange}
+          row // Afficher les boutons radio en ligne
+        >
+          <FormControlLabel
+            value="VIP"
+            control={<Radio size="small" />} // Taille réduite pour correspondre aux autres champs
+            label="VIP Ticket"
+          />
+          <FormControlLabel
+            value="Premium"
+            control={<Radio size="small" />}
+            label="Premium Ticket"
+          />
+          <FormControlLabel
+            value="Standard"
+            control={<Radio size="small" />}
+            label="Standard Ticket"
+          />
+        </RadioGroup>
+      </FormGrid>
       <FormGrid size={{ xs: 12 }}>
         <FormControlLabel
           control={<Checkbox name="saveAddress" value="yes" />}
@@ -100,3 +142,8 @@ export default function AddressForm({ formValues, onChange }) {
     </Grid>
   );
 }
+
+AddressForm.propTypes = {
+  formValues: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

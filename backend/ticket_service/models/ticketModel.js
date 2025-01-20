@@ -18,7 +18,13 @@ const ticketSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: String, // e.g., VIP, General, etc.
+    type: String,
+    enum: ["VIP", "Premium", "Standard"],
+    default: "Standard",
+    required: true,
+  },
+  owner: {
+    type: String,
     required: true,
   },
   isAvailable: {
@@ -27,4 +33,6 @@ const ticketSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Ticket", ticketSchema);
+const Ticket = mongoose.model("Ticket", ticketSchema);
+
+module.exports = Ticket;

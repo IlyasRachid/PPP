@@ -1,6 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Pour la navigation
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
+import dayjs from "dayjs";
 import CssBaseline from "@mui/material/CssBaseline";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -8,10 +9,12 @@ import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import matchesData from "../Data/matches.json";
+import CustomDatePicker from "./CustomDatePicker";
+import Search from "./Search"; // Import the Search component
 
 function refreshMessages() {
   return matchesData.matches.map((match, index) => ({
-    id: index, // Identifiant unique du match
+    id: index,
     title: `${match.team1} vs ${match.team2}`,
     date: `${match.date} at ${match.time}`,
     team1: match.team1Image,
@@ -22,8 +25,22 @@ function refreshMessages() {
 }
 
 export default function FixedBottomNavigation() {
-  const navigate = useNavigate(); // Hook pour gérer la navigation
+  const navigate = useNavigate();
   const [messages] = React.useState(() => refreshMessages());
+  const [selectedDate, setSelectedDate] = React.useState(null); // State for selected date
+  const [searchQuery, setSearchQuery] = React.useState(""); // State for search query
+
+  // Filter matches based on the selected date and search query
+  const filteredMessages = messages.filter((message) => {
+    const matchDate = dayjs(message.date.split(" at ")[0]); // Extract date part
+    const matchesDate = selectedDate
+      ? matchDate.isSame(selectedDate, "day")
+      : true;
+    const matchesSearch = message.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    return matchesDate && matchesSearch;
+  });
 
   return (
     <Box
@@ -41,8 +58,18 @@ export default function FixedBottomNavigation() {
       >
         Matches
       </Typography>
+      {/* Add the Search and CustomDatePicker */}
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 3 }}>
+        <Search
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)} // Update search query
+        />
+        <CustomDatePicker
+          onDateChange={(date) => setSelectedDate(date)} // Update selected date
+        />
+      </Box>
       <List sx={{ width: "100%" }}>
-        {messages.map(
+        {filteredMessages.map(
           ({ id, title, date, team1, team2, team1Name, team2Name }) => (
             <ListItemButton
               key={id}
@@ -57,7 +84,7 @@ export default function FixedBottomNavigation() {
                     date: date,
                   },
                 })
-              } // Naviguer vers la page "/matches" avec les données du match
+              }
             >
               <Box
                 sx={{
